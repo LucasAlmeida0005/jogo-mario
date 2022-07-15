@@ -1,0 +1,108 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: rgba(49, 9, 9, 0.918);
+}
+
+.game-board{
+  width: 100%;
+  height: 500px;
+  border-bottom: 20px solid rgb(4, 114, 22);
+  margin: 0 auto; /* para centralizar a div*/
+  position: relative;
+  overflow: hidden; /* 'remove' tudo que passar do quadrado */
+  background: linear-gradient(#87CEEB, #E0F6FF);
+}
+   /* como deixamos position absolute para foto do tubo, devemos deixar position relative no .game-board fazendo assim com que a imagem respeite as bordas do quadrado */ 
+
+.AlinhaBotao{
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 60px;
+  text-align: center;
+}
+.botao{
+  height: 30px;
+  width: 150px;
+  margin: 0 auto ;
+  background-color: rgb(126, 165, 131);
+  text-transform: uppercase;
+  font-family: Arial;
+  font-size: 20px;
+  color: #222;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+.botao:hover{
+  background-color: lightgreen;
+  transition: 0.5s;
+}
+
+.pipe{
+  position: absolute;
+  bottom: 0;
+  width: 80px;
+  animation: pipe-animation 1.5s infinite linear; 
+  /* chamamos a animacao e passamos o tempo de duracao  */
+}
+
+
+@keyframes pipe-animation{
+  from{
+    right: -80px; /* passamos ele negativo para começar de fora do quadrado e entrar normalmente sem dar a sensação de aparecer do nada */
+  }
+  to{
+    right: 100%;
+  }
+}
+
+.clouds{
+  position: absolute; /* se nao tiver absolute interfere com o mario */
+  width: 550px;
+  animation: clouds 19s infinite linear;
+}
+
+.mario{
+  width: 150px;
+  position: absolute;
+  bottom: 0px;
+  
+}
+
+/* a classe jump sera adicionada a imagem mario quando o usuário clicar no espaço do teclado, com isso chamando a animacao*/
+.jump{
+  animation: jump 500ms infinite ease-out;
+  /* ease-out faz a animacao desacelerar quando vai chegando perto do fim (mario cai mais lentamente)*/
+}
+
+@keyframes jump {
+  /* Tambem podemos fazer animaçoes utilizando a porcentagem como parametro, 0% é o inicio 50% é o meio e 100% é o final */
+    0%{
+      bottom: 0;
+    }
+    40%{
+      bottom: 180px;
+    }
+    50%{
+      bottom: 180px;
+    }
+    60%{
+      bottom: 180px;
+    }
+    100%{
+      bottom: 0;
+    }
+}
+
+@keyframes clouds{
+  from{
+    right: -50%;
+  }
+  to{
+    right: 100%;
+  }
+}
